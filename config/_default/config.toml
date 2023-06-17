@@ -21,3 +21,5 @@ disqusShortname = "hugo-theme-stack"
     languageName = "English"
     weight = 1
     contentDir = "content/english"
+
+    staticDir = "assets"

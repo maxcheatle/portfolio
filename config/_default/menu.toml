@@ -1,12 +1,6 @@
 # Configure main menu and social menu
-[[main]]
-identifier = "home"
-name = "Home"
-url = "/"
 
-[main.params]
-icon = "home"
-newtab = false
+# Socials
 
 [[social]]
 identifier = "github"
@@ -24,4 +18,24 @@ url = "https://www.linkedin.com/in/maxcheatle"
 [social.params]
 icon = "linkedin"
 
+# Menu List
 
+[[main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 1
+
+[main.params]
+icon = "home"
+newtab = false
+
+[[main]]
+identifier = "cv"
+name = "CV"
+url = "/cv"
+weight = 2
+
+[main.params]
+icon = "cv"
+newtab = false
