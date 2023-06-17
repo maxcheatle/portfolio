@@ -1,7 +1,7 @@
-# Uncomment this file to enable multilanguage site support
+# defaultContentLanguage = "en"
 
-#[en]
-#languageName = "English"
-#languagedirection = "ltr"
-#title = "Example Site"
-#weight = 1
+# [languages]
+#  [languages.en]
+#    languageName = "English"
+#    weight = 1
+#    contentDir = "content/english"
