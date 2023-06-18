@@ -28,8 +28,6 @@ layout: "cv"
 
 ### Business Analyst Intern, Amazon
 
-![Amazon Icon](/assets/icons/amazon.svg)
-
 May-Sep 2022
 
 - Responsibilities:
