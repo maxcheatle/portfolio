@@ -1,6 +1,6 @@
 ---
-title: Example Category
-description: A description of this category
+title: R
+description: Some of my data analysis work using R
 image:
 
 # Badge style
