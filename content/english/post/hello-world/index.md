@@ -1,82 +1,42 @@
 ---
-title: Draft Post
-description: Draft Description
-slug: blog_draft
-date: 2022-03-06 00:00:00+0000
-image: gdp_life_exp.png
+title: Welcome to my site! Click here to learn more :)
+slug: welcome
+date: 2023-01-01 00:00:00+0000
+weight: 999
+scale: small
 categories:
-    - R
-tags:
-    - Data Analysis
-    - Data Visualisation
+    - About Me
 
 links:
-  - title: Gapminder
-    description: Gapminder is an independent educational non-proﬁt ﬁghting global misconceptions.
-    website: https://www.gapminder.org/
-    image: https://pbs.twimg.com/profile_images/523819488236433408/gAMQQRCu_400x400.png
-    
+  - title: LinkedIn
+    description: Checkout my LinkedIn
+    website: https://www.linkedin.com/in/maxcheatle/
+    image: https://media.licdn.com/dms/image/C560BAQHaVYd13rRz3A/company-logo_200_200/0/1638831589865?e=1695254400&v=beta&t=ixE6d7Q4RzrVvmulEhBKXGD-yfIcyHHehwcN2bCVI6I
+
+  - title: GitHub
+    description: Take a look at my GitHub
+    website: https:///www.github.com/maxcheatle
+    image: https://media.licdn.com/dms/image/C560BAQFmuLSyL1nlPA/company-logo_200_200/0/1678231358774?e=1695254400&v=beta&t=tFE_oSsdwcCZzapWo3Ymya8Z9g84EETMMqmUBNbESFI
+
 ---
 
-This code generates a data visualization that explores the relationship between GDP per capita and life expectancy using the gapminder dataset. The code first loads the necessary packages, including ggplot2 for plotting and gapminder for accessing the dataset.
+## Welcome
 
-The gapminder dataset contains information about various countries, including their GDP per capita, life expectancy, and population. To focus on a specific year, the code subsets the data for the year 2007 using the subset() function.
+> Hey, my name is Max. Thanks for checking out my site!
 
-The plot is created using the ggplot() function, specifying the x-axis as GDP per capita, the y-axis as life expectancy, the size of data points as population, and the color of data points as continent. Custom colors are defined for each continent using the `scale_color_manual
+I created this as a portfolio of my data analysis skills. Most of the work here is using R, as I'm super interested in statistical programming - you can explore the ***categories*** and ***tags*** sections if you're looking for something in particular, or use my [search](www.maxcheatle.com/search) function
 
-### Code (R)
+##  Navigation
 
-```R
+> Feel free to explore my site however you wish, but here is an overview of the key features.
 
-# Load required packages
-library(ggplot2)
-library(gapminder)
-library(showtext)
+- Scrolling through the [**home page**](www.maxcheatle.com/home) will show you all the work I'm passionate about. This is the best place to see my skills
+- If you're looking for something specific, take look at the **categories** and **tags** sections, or use the [**search**](www.maxcheatle.com/search) function
+- On the home page, you can find links to my [**LinkedIn**](https://www.linkedin.com/in/maxcheatle/) and [**GitHub**](https://github.com/maxcheatle). You can also find them at the bottom of this page
+- If you'd like to see my [CV](www.maxcheatle.com/cv), take a look on the menu on the left. If you want the full .pdf version, shoot me an [email](mailto:maxim.cheatle@gmail.com)
 
-# Add Google Fonts
-font_add_google("Montserrat")
+##  Get in Touch
 
-# Set the font for the plot
-showtext_auto()
+I would love to hear from you! If you have any inquiries, opportunities, or  ideas, please let me know: 
 
-# Load the gapminder dataset
-data(gapminder)
-
-# Subset the data for the year 2007
-gapminder_2007 <- subset(gapminder, year == 2007)
-
-# Define custom colors for continents
-continent_colors <- c("#FFB000", "#FF4433", "#4488FF", "#00C957", "#AA00FF")
-
-# Create the plot
-gg <- ggplot(gapminder_2007, aes(x = gdpPercap, y = lifeExp, size = pop, color = continent)) +
-  geom_point(alpha = 0.8, shape = 21, fill = "#0047AB", stroke = 0.5) +
-  scale_size(range = c(3, 15), breaks = c(5000000, 10000000, 50000000, 100000000),
-             labels = c("5M", "10M", "50M", "100M")) +
-  scale_color_manual(values = continent_colors) +
-  labs(
-    title = "Relationship between GDP per Capita and Life Expectancy (2007)",
-    x = "GDP per Capita",
-    y = "Life Expectancy",
-    color = "Continent",
-    size = "Population"
-  ) +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(size = 24, color = "#232F3E", hjust = 0.5, margin = margin(b = 20),
-                              family = "Montserrat", face = "bold"),
-    axis.title = element_text(size = 16, color = "#232F3E", family = "Montserrat"),
-    axis.text = element_text(size = 14, color = "#232F3E", family = "Montserrat"),
-    legend.title = element_text(size = 16, color = "#232F3E", family = "Montserrat"),
-    legend.text = element_text(size = 14, color = "#232F3E", family = "Montserrat")
-  )
-
-# Save the plot as a PNG file
-ggsave("gdp_life_exp.png", plot = gg, width = 10, height = 7, dpi = 300)
-
-
-```
-
-### Image (Zoomable)
-
-![GDP, Life Exp](gdp_life_exp.png)
+>maxim.cheatle@gmail.com

@@ -2,7 +2,7 @@
 title: Exploring 2023 PGA Tour player performance
 description: Analysing and visualising PGA Tour player statistics using R and statitical principles.
 slug: pga_analysis
-date: 2022-21-06 00:00:00+0000
+date: 2023-06-20 00:00:00+0000
 image: birdies_distance_plot.png
 categories:
     - R
@@ -191,4 +191,4 @@ While driving distance can provide an edge, accuracy and course management are e
 
 In summary, driving distance and birdies per round are vital metrics in golf. While longer hitters may have an advantage, accuracy and the ability to convert birdie opportunities are equally important. Finding the right balance between power, accuracy, and scoring ability is key to success on the golf course.
 
-![Relationship between birdies and driving distance](images/birdies_distance_plot.png)
+![Relationship between birdies and driving distance](birdies_distance_plot.png)
