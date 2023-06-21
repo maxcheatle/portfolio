@@ -1,6 +1,6 @@
 ---
-title: An Introduction to R Data Analysis
-description: Welcome to Hugo Theme Stack
+title: Draft Post
+description: Draft Description
 slug: blog_draft
 date: 2022-03-06 00:00:00+0000
 image: gdp_life_exp.png
