@@ -1,7 +1,7 @@
 ---
 title: Welcome to my site! Click here to learn more :)
 slug: welcome
-date: 2023-01-01 00:00:00+0000
+date: 2023-06-20 00:00:00+0000
 weight: 999
 categories:
     - About Me
@@ -21,7 +21,7 @@ links:
 
 ## Welcome
 
-> Hey, my name is Max. Thanks for checking out my site!
+> Hey, my name is Max. I'm a graduate of London Business School (MSc) and the London School of Economics (BSc), and have experience working in Big Tech, and a tech-startup.
 
 I created this as a portfolio of my data analysis skills. Most of the work here is using R, as I'm super interested in statistical programming - you can explore the ***categories*** and ***tags*** sections if you're looking for something in particular, or use my [search](www.maxcheatle.com/search) function.
 
