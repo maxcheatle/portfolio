@@ -73,28 +73,28 @@ enabled = true
 enabled = true
 
 ## Comments
-#[comments]
+[comments]
 enabled = true
 provider = "disqus"
 
-#[comments.disqusjs]
+[comments.disqusjs]
 shortname = ""
 apiUrl = ""
 apiKey = ""
 admin = ""
 adminLabel = ""
 
-#[comments.utterances]
+[comments.utterances]
 repo = ""
 issueTerm = "pathname"
 label = ""
 
-#[comments.remark42]
+[comments.remark42]
 host = ""
 site = ""
 locale = ""
 
-#[comments.vssue]
+[comments.vssue]
 platform = ""
 owner = ""
 repo = ""
@@ -102,7 +102,7 @@ clientId = ""
 clientSecret = ""
 autoCreateIssue = false
 
-#[comments.waline]
+[comments.waline]
 serverURL = ""
 lang = ""
 visitor = ""
@@ -111,21 +111,21 @@ emoji = ["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"]
 requiredMeta = ["name", "email", "url"]
 placeholder = ""
 
-#[comments.waline.locale]
+[comments.waline.locale]
 admin = "Admin"
 
-#[comments.twikoo]
+[comments.twikoo]
 envId = ""
 region = ""
 path = ""
 lang = ""
 
-#[comments.cactus]
+[comments.cactus]
 defaultHomeserverUrl = "https://matrix.cactus.chat:8448"
 serverName = "cactus.chat"
 siteName = ""
 
-#[comments.giscus]
+[comments.giscus]
 repo = ""
 repoID = ""
 category = ""
@@ -136,13 +136,13 @@ darkTheme = ""
 reactionsEnabled = 1
 emitMetadata = 0
 
-#[comments.gitalk]
+[comments.gitalk]
 owner = ""
 admin = ""
 repo = ""
 clientID = ""
 clientSecret = ""
 
-#[comments.cusdis]
+[comments.cusdis]
 host = ""
 id = ""
