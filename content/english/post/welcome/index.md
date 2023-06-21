@@ -3,7 +3,6 @@ title: Welcome to my site! Click here to learn more :)
 slug: welcome
 date: 2023-01-01 00:00:00+0000
 weight: 999
-scale: small
 categories:
     - About Me
 
@@ -24,16 +23,16 @@ links:
 
 > Hey, my name is Max. Thanks for checking out my site!
 
-I created this as a portfolio of my data analysis skills. Most of the work here is using R, as I'm super interested in statistical programming - you can explore the ***categories*** and ***tags*** sections if you're looking for something in particular, or use my [search](www.maxcheatle.com/search) function
+I created this as a portfolio of my data analysis skills. Most of the work here is using R, as I'm super interested in statistical programming - you can explore the ***categories*** and ***tags*** sections if you're looking for something in particular, or use my [search](www.maxcheatle.com/search) function.
 
 ##  Navigation
 
 > Feel free to explore my site however you wish, but here is an overview of the key features.
 
-- Scrolling through the [**home page**](www.maxcheatle.com/home) will show you all the work I'm passionate about. This is the best place to see my skills
-- If you're looking for something specific, take look at the **categories** and **tags** sections, or use the [**search**](www.maxcheatle.com/search) function
-- On the home page, you can find links to my [**LinkedIn**](https://www.linkedin.com/in/maxcheatle/) and [**GitHub**](https://github.com/maxcheatle). You can also find them at the bottom of this page
-- If you'd like to see my [CV](www.maxcheatle.com/cv), take a look on the menu on the left. If you want the full .pdf version, shoot me an [email](mailto:maxim.cheatle@gmail.com)
+- Scrolling through the [**home page**](www.maxcheatle.com/home) will show you all the work I'm passionate about. This is the best place to see my skills.
+- If you're looking for something specific, take look at the **categories** and **tags** sections, or use the [**search**](www.maxcheatle.com/search) function.
+- On the home page, you can find links to my [**LinkedIn**](https://www.linkedin.com/in/maxcheatle/) and [**GitHub**](https://github.com/maxcheatle). You can also find them at the bottom of this page.
+- If you'd like to see my [CV](www.maxcheatle.com/cv), take a look on the menu on the left. If you want the full .pdf version, shoot me an [email](mailto:maxim.cheatle@gmail.com).
 
 ##  Get in Touch
 

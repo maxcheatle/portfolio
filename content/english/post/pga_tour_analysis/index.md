@@ -36,7 +36,7 @@ library(png)
 
 Using data from the [**PGA Tour**](https://www.pgatour.com/stats) website, I have created a database of the 2022/23 season player statistics (update as of June 21st).
 
-[![PGA Tour Website](images/pga_tour_website.png)](https://www.pgatour.com/stats)
+[![PGA Tour Website](pga_tour_website.png)](https://www.pgatour.com/stats)
 
 ### Database connection
 
