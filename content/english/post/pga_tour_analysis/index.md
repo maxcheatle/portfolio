@@ -122,3 +122,254 @@ From our output tables, we can see that all of our variables are significant at 
 ![Regression Diagnostics](reg_diagnostics.png)
 
 From a diagnostic plot perspective, our model also holds up. Our residual versus fitted plot shows relatively strong randomness, with some difficulties at the tails that I am not overly concerned with in this context. The same can be said for the Normal Q-Q plot, which certainly passes the 'fat pen test'. For scale-location, we are looking for a horizontal trend, and I would argue that we meet acceptable levels here too. 
+
+## Code
+
+Here, you can find the code I used to perform each of the above analyses. 
+
+### Packages
+
+```R
+
+library(tidyverse)
+library(DBI)
+library(janitor)
+library(ggforce)
+library(grid)
+library(png)
+library(scales)
+library(GGally)
+library(ggfortify)
+library(margins)
+library(jtools)
+
+```
+
+### Database Connection
+
+```R
+
+pga_stats <- DBI::dbConnect(
+  drv = RSQLite::SQLite(),
+  dbname = here::here("data", "pga_stats.db")
+)
+
+DBI::dbListTables(pga_stats)
+
+```
+
+### Database Cleaning
+
+```R
+
+birdies <- data.frame(
+  dplyr::tbl(pga_stats, "birdies_per_round")
+  ) %>% 
+  janitor::clean_names()
+
+driving <- data.frame(
+  dplyr::tbl(pga_stats, "driving_distance")
+  ) %>% 
+  janitor::clean_names()
+
+gir <- data.frame(
+  dplyr::tbl(pga_stats, "gir_pct")
+  ) %>% 
+  janitor::clean_names()
+
+scoring <- data.frame(
+  dplyr::tbl(pga_stats, "scoring_avg")
+  ) %>% 
+  janitor::clean_names()
+
+scrambling <- data.frame(
+  dplyr::tbl(pga_stats, "scrambling_pct")
+  ) %>% 
+  janitor::clean_names()
+
+```
+
+```R
+
+birdies <- birdies %>% 
+  select(-movement) %>% 
+  rename(birdies_per_round = avg)
+
+driving <- driving %>% 
+  select(-movement) %>% 
+  rename(driving_avg = avg)
+
+gir <- gir %>% 
+  select(-movement) %>% 
+  rename(gir_pct = x)
+
+scoring <- scoring %>% 
+  select(-movement) %>% 
+  rename(scoring_avg = avg)
+
+scrambling <- scrambling %>% 
+  select(-movement) %>% 
+  rename(scrambling_pct = x)
+
+```
+
+### Heatmap
+
+```R
+
+source("pga_ggplot_theme.R")
+
+# Prepare data for the heatmap
+heatmap_data <- birdies %>%
+  
+  # Joining respecive tables to complete dataset
+  left_join(driving, by = "player") %>%
+  left_join(gir, by = "player") %>%
+  left_join(scoring, by = "player") %>%
+  left_join(scrambling, by = "player") %>%
+  select(player, birdies_per_round, driving_avg, gir_pct, scoring_avg, scrambling_pct) %>% 
+  
+  # Changing percentage variables, which are currently characters, to numeric
+  mutate(gir_pct = as.numeric(sub("%", "", gir_pct)),
+         scrambling_pct = as.numeric(sub("%", "", scrambling_pct))) %>% 
+  
+  # Changing raw value to group rank
+  mutate(birdies_per_round = rank(-birdies_per_round),
+         driving_avg = rank(-driving_avg),
+         gir_pct = rank(-gir_pct),
+         scoring_avg = rank(scoring_avg),
+         scrambling_pct = rank(-scrambling_pct)) %>% 
+  
+  # Creating an overall rank, by summing each player's rank in all metrics, then re-ranking
+  group_by(player) %>% 
+  mutate(overall = sum(birdies_per_round + driving_avg + gir_pct + scoring_avg + scrambling_pct)) %>% 
+  ungroup() %>% 
+  mutate(overall = rank(overall)) %>% 
+  filter(overall <= 30) %>% 
+  
+  # Longing the data for plotting
+  pivot_longer(cols = c(birdies_per_round, 
+                        driving_avg, gir_pct, 
+                        scoring_avg, 
+                        scrambling_pct), 
+               values_to = "rank", 
+               names_to = "metric")
+
+# Plot the heatmap
+heatmap <- ggplot(heatmap_data, aes(x = reorder(player, overall), y = metric, fill = rank)) +
+  geom_tile(color = "white") +
+  
+  # Using a white to red scale, inspired by PGA colours
+  scale_fill_gradient(low = "white", high = "#C71230") + 
+  
+  # Aesthetic additions
+  labs(x = NULL, y = NULL, title = "PGA Player Heatmap", subtitle = "For Top 30 players in 2022/23 PGA Tour tournaments", fill = "Tour Rank") +
+  pga_theme +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 12),
+        axis.text.y = element_text(size = 12))
+
+ggsave("images/heatmap.png", heatmap, width = 16, height = 8)
+
+```
+
+### Driving Distance vs. Birdie Rate
+
+```R
+
+# Left join the birdies and driving datasets
+birdies_distance_plot <- birdies %>% 
+  left_join(driving, by = "player") %>% 
+
+  # Create the plot using ggplot
+  ggplot(aes(x = birdies_per_round, y = driving_avg)) +
+
+  # Add line segments and labels for Kevin Kisner and Brian Stuard
+  geom_segment(data = . %>% filter(player %in% c("Kevin Kisner", "Brian Stuard")),
+               aes(x = birdies_per_round, y = driving_avg, 
+                   xend = birdies_per_round, yend = driving_avg - 5),
+               color = "white") +
+  geom_text(data = . %>% filter(player %in% c("Kevin Kisner", "Brian Stuard")),
+            aes(label = player, x = birdies_per_round, y = driving_avg - 6), 
+            vjust = 1, color = "white", fontface = "bold") +
+
+  # Add line segments and labels for Rory McIlroy and Jon Rahm
+  geom_segment(data = . %>% filter(player %in% c("Rory McIlroy", "Jon Rahm")),
+               aes(x = birdies_per_round, y = driving_avg, 
+                   xend = birdies_per_round, yend = driving_avg + 5),
+               color = "white") +
+  geom_text(data = . %>% filter(player %in% c("Rory McIlroy", "Jon Rahm")),
+            aes(label = player, x = birdies_per_round, y = driving_avg + 7), 
+            vjust = 1, color = "white", fontface = "bold") +
+  
+  # Adding a smoother line, using a linear regression
+  geom_smooth(method = lm, color = "green", se = FALSE, linetype = "longdash") +
+  
+  # Add scatter points with customized aesthetics
+  geom_point(size = 3, alpha = 0.7, color = "grey", shape = 21, fill = "grey") +
+
+  # Set axis labels and plot titles with customized text appearance
+  labs(x = "Birdies per Round", y = "Driving Distance",
+       title = "Relationship between Birdies and Driving Distance",
+       subtitle = "PGA Tour Players", caption = "Labels: Best and worst performers in both metrics") +
+  theme(plot.title = element_text(color = "white", size = 20, face = "bold"),
+        plot.subtitle = element_text(color = "white", size = 14),
+        axis.title = element_text(color = "white", size = 12),
+        axis.text = element_text(color = "white", size = 10),
+        panel.background = element_rect(fill = "#032544"),
+        panel.grid = element_blank()) +
+  pga_theme
+
+# Save the plot as a PNG image
+ggsave("images/birdies_distance_plot.png", birdies_distance_plot, width = 16, height = 8)
+
+```
+
+### Regression
+
+```R
+
+regression_data <- birdies %>%
+  
+  # Joining respecive tables to complete dataset
+  left_join(driving, by = "player") %>%
+  left_join(gir, by = "player") %>%
+  left_join(scoring, by = "player") %>%
+  left_join(scrambling, by = "player") %>%
+  select(player, birdies_per_round, driving_avg, gir_pct, scoring_avg, scrambling_pct) %>% 
+  
+  # Changing percentage variables, which are currently characters, to numeric
+  mutate(gir_pct = as.numeric(sub("%", "", gir_pct)),
+         scrambling_pct = as.numeric(sub("%", "", scrambling_pct)))
+
+corr_pairs <- regression_data %>% 
+  select(-player) %>% 
+  ggpairs()
+  
+ggsave("images/corr_pairs.png", corr_pairs, width = 16, height = 8)
+
+model_1 <- lm(scoring_avg ~ driving_avg, data = regression_data)
+summary(model_1)
+autoplot(model_1, 1:3)
+
+model_2 <- lm(scoring_avg ~ driving_avg + birdies_per_round, data = regression_data)
+summary(model_2)
+autoplot(model_2, 1:3)
+
+model_3 <- lm(scoring_avg ~ driving_avg + birdies_per_round + gir_pct, data = regression_data)
+summary(model_3)
+autoplot(model_3, 1:3)
+
+model_4 <- lm(scoring_avg ~ driving_avg + birdies_per_round + gir_pct + scrambling_pct, data = regression_data)
+summary(model_4)
+ggplot2::autoplot(model_4, 1:3)
+
+# Creating Plots for Presentation
+
+print(ggplot2::autoplot(model_4, 1:3) +
+  theme_apa())
+
+plot_summs(model_1, model_2, model_3, model_4, robust = TRUE) +
+labs(title = "Marginal Impact", x = "Scoring Avg (Estimate)", y = "Metric") +
+theme_apa()
+
+```
