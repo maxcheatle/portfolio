@@ -3,7 +3,7 @@ title: Exploring 2023 PGA Tour player performance
 description: Analysing and visualising PGA Tour player statistics using R and statitical principles.
 slug: pga_analysis
 date: 2023-06-20 00:00:00+0000
-image: heatmap.png
+image: cover.png
 categories:
     - R
 tags:
@@ -21,7 +21,7 @@ links:
 
 ## Intro
 
-Golf is a game of fine margins, and similar to many modern-day sports, data is becoming a larger part of player’s practice and on-course decision making.
+Golf is a game of fine margins, and similar to many modern-day sports, data is becoming a larger part of players' practice and on-course decision making.
 
 The [**PGA Tour**](https://www.pgatour.com/stats) website is a great repository for player’s statistical performance throughout the tour’s calendar. Below you can see a basic introductory analysis I have performed; including some exploratory data analysis, as well as a regression to unlock some insights into what drives a good scoring average on the PGA Tour.
 
