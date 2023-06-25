@@ -1,6 +1,6 @@
 ---
 title: Exploring 2023 PGA Tour player performance
-description: Analysing and visualising PGA Tour player statistics using R and statitical principles.
+description: Analysing and visualising PGA Tour player statistics using R and statistical principles.
 slug: pga_analysis
 date: 2023-06-20 00:00:00+0000
 image: cover.png
@@ -87,7 +87,7 @@ All of our metrics show negative correlations with scoring average. That is, imp
 
 ###  Model Definition
 
-I have used a linear regression model to undertake this study - this offers simplicity and clarity to the average reader withou sacrificing a great deal of model accuracy.
+I have used a linear regression model to undertake this study - this offers simplicity and clarity to the average reader without sacrificing a great deal of model accuracy.
 
 ![Regression Formula](reg_formula.png)
 
@@ -101,19 +101,19 @@ The output of our model confirms some obvious things, but also shows some more i
 
 #### Birdie Rate
 
-Firstly, `birdies_per_round` is the most influential variable by far. This is mostly as expected, since it is our only *direct* scoring metric - a birdie reduces a player's score by 1 and therefore should impact `scoring_avg` by roughly 1. However, perhaps more interestingly, our final model shows that increasing the number of birdies per round by 1, generates a reduction in scoring average by -1.1. Why is that interesting? Well, how does a birdie generate more than its sum in scoring benefits?
+Firstly, `birdies_per_round` is the most influential variable by far. This is expected, since it is our only *direct* scoring metric - a birdie reduces a player's score by 1 and therefore should impact `scoring_avg` by roughly 1. However, perhaps more interestingly, our final model shows that increasing the number of birdies per round by 1, generates a reduction in scoring average by 1.1. Why is that interesting? Well, how does a birdie generate more than its sum in scoring benefits?
 
-This is counter-intuitive, in my opinion. I would have thought that the effect here would be < -1, since scoring a birdie does not guarantee a forthcoming bogey. This would suggest that a birdie is not quite worth -1, since there is a probability that score will slip later on. However, this suggests, on the contrary, that players who score an additional birdie may experience a mental boost that allows them to go on and score more birdies.
+This is counter-intuitive, in my opinion. I would have thought that the effect here would be < -1, since scoring a birdie does not guarantee the lack of a forthcoming bogey. This would suggest that a birdie is not quite worth -1, since there is a probability that score will slip later on. However, the result suggests the contrary - players who score one additional birdie may experience a mental boost that allows them to go on and score more birdies.
 
 #### Greens in Regulation and Scrambling
 
-`gir_pct` and `scrambling_pct` both perform similary. That is, a 1 percentage point increase in either metric generates an estimtated 0.1 improvement in a player's `scoring_avg`. This perhaps seems quite small, achieving GIR or being able to consistently scramble should be critical skills. This likely tells us that PGA level players acheive GIR and scramble relatively similarly, and the money-makers are the ones who are able to hole-out putts consistently.
+Variables `gir_pct` and `scrambling_pct` both perform similary. That is, a 1 percentage point increase in either metric generates an estimtated 0.1 improvement in a player's `scoring_avg`. This perhaps seems quite small, achieving GIR or being able to consistently scramble should be critical skills. This likely tells us that PGA level players acheive GIR and scramble relatively similarly, and the money-makers are the ones who are able to hole-out putts consistently.
 
 #### Variable of Interest: Average Driving Distance
 
-Our results here tell us that a 1 yard increase in average driving distance yields a 0.01 reduction in player's scoring average. That means, for each yard a player can increase their average driving distance, they will score 1% better on average.
+Our results here tell us that a 1 yard increase in average driving distance yields a 0.01 reduction in player's scoring average. That means, for each yard a player can increase their average driving distance, they will score 0.01 better on average.
 
-This may seem very small, but I find the results here very interesting. Primarily, driving distance does lead to a non-negative increase in tournament performance. Note that a 1-yard increase is relatively small, unless you have already reached diminishing returns to driving distance (i.e. Rory McIlroy is unlikely to increase driving distance, since he already hits it so far). Hence, a 10-15 yard increase can start to have tangible effects on a player's tournament results. Take Viktor Hovland as an example; he's increasing his driving distance by approximately 10 yards since 2019, and now finds himself right at the sharp-end of PGA tournaments frequently.
+This may seem very small, but I find the results here very interesting. Primarily, driving distance does lead to a non-negative increase in tournament performance. Note that a 1-yard increase is relatively small, unless you have already reached diminishing returns to driving distance (i.e. Rory McIlroy is unlikely to increase driving distance, since he already hits it so far). Hence, a 10-15 yard increase can start to have tangible effects on a player's tournament results. Take Viktor Hovland as an example; he's increased his driving distance by approximately 10 yards since 2019, and now finds himself right at the sharp-end of PGA tournaments frequently.
 
 ### Regression Diagnostics
 
