@@ -9,6 +9,8 @@ categories:
 tags:
     - Data Analysis
     - Data Visualisation
+    - Linear Regression
+    - Sport
     - Golf
 
 links:
