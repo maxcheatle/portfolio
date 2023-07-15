@@ -141,7 +141,7 @@ ggsave("images/match_results.png", match_results_plot, width = 16, height = 8, d
 
 ```
 
-# Best and Worst Opponents
+### Best and Worst Opponents
 
 ```R
 
