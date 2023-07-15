@@ -14,11 +14,14 @@ tags:
     - Football
 
 links:
-  - title: FBREF
-    description: Historical repository of football team statistics
-    website: https://fbref.com/en/comps/9/Premier-League-Stats
-    image: https://cdn.ssref.net/req/202307011/logos/fb-logo.svg
-    
+  - title: West Ham United
+    description: Official website of West Ham United FC
+    website: https://www.whufc.com/
+    image: https://www.whufc.com/themes/custom/westham/files/westham-logo.svg
+  - title: Premier League
+    description: The official website of the Premier League
+    website: https://www.premierleague.com/
+    image: https://www.premierleague.com/resources/rebrand/v7.124.0/i/elements/pl-main-logo.png
 ---
 
 ## Intro
@@ -49,6 +52,16 @@ Note that some of the teams here have a small sample size, like Huddersfield, wh
 
 ![West Ham's least favourite opponents](losses.png)
 
+Now let's take a look at the teams West Ham don't fancy playing against. Straight away, we see that West Ham have never beat Brentford in the Premier League, in 4 attempts since 2017/18 - though did beat Brentford in the 22/23 FA Cup 8 days after a dissapointing 2-0 loss in the Premier League. A bit of a bogey team from West Ham's perspective.
 
+Other bogey teams include Wolves, Brighton, Cardiff and Newcastle, all of whom West Ham only beat in 50% of their league ties. Liverpool, Manchester City, Arsenal, and Manchester United are all more obvious candidates that West Ham have showed inability to beat frequently. 
 
+## Fine Margins
 
+Now we've had a brief look at West Ham's performaces over the past 5 years, let's explore the statistical differences between wins (W), draws (D), and losses (L). 
+
+![West Ham's tatistical performance by match result](result_performances.png)
+
+The overwhelming observation to be made here is that there are limited clear performance deviations by match result. This goes to show the fine margins between wins, draws, and losses, at the top level of English football. 
+
+Of the selected variables, `shots` (number of shots) and `shot_ot_rate` (% of shots taken that are on target) are the only variables that stand-out when comparing wins to losses and draws. Variables `att_3rd` (touches in the attacking third of the pitch) and `def_3rd` (touches in the defensive third) have a tighter distribution when West Ham win, versus draws and losses, which have a wider distribution of perfromances. 

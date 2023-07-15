@@ -1,7 +1,7 @@
 ---
 title: Exploring 2023 PGA Tour player performance
 description: Analysing and visualising PGA Tour player statistics using R and statistical principles.
-slug: pga_analysis
+slug: pga
 date: 2023-06-20 00:00:00+0000
 image: cover.png
 categories:
