@@ -40,7 +40,7 @@ I joined the EU AMZL ACES On Road Productivity team which is responsible for the
 
 Apr-Jul 2021
 
-Interning at Flymble gave me my first professional exposure to a high-paced tech startup. I was exposed to all key operations at the company, helping define my career path as I discovered what I enjoyed. 
+Interning at Flymble gave me my first professional experience of a high-paced tech startup. I was exposed to all key operations at the company, helping define my career path as I discovered what I enjoyed. 
 
 - Responsible for data-driven root cause problem solving to incrementally improve user experience.
 - Created Tableau dashboards to monitor project critical KPIs.
